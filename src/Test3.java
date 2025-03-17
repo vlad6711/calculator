@@ -15,27 +15,29 @@ public class Test3 {
         Scanner sc = new Scanner(file1);
         PrintWriter pw = new PrintWriter(file2);
 
-        try {
-            String input = sc.nextLine();
-            String[] str = input.split(" ");
-            String a1 = str[0];
-            String sign = str[1];
-            if (!sign.equals("+") && !sign.equals("-") && !sign.equals("*") && !sign.equals("/"))
-                throw new Exception("Operation Error!");
-            String b1 = str[2];
-            double a = Double.parseDouble(a1);
-            double b = Double.parseDouble(b1);
+        while (sc.hasNextLine()) {
+            try {
+                String input = sc.nextLine();
+                String[] str = input.split(" ");
+                String a1 = str[0];
+                String sign = str[1];
+                if (!sign.equals("+") && !sign.equals("-") && !sign.equals("*") && !sign.equals("/"))
+                    throw new Exception(input + " = " + "Operation Error!");
+                String b1 = str[2];
+                double a = Double.parseDouble(a1);
+                double b = Double.parseDouble(b1);
 
-            if (sign.equals("/") && b == 0) throw new Exception("Error! Division by zero");
+                if (sign.equals("/") && b == 0) throw new Exception(input + " = " + "Error! Division by zero");
 
-            if (sign.equals("+")) pw.println(String.valueOf(a + b));
-            else if (sign.equals("-")) pw.println(String.valueOf(a - b));
-            else if (sign.equals("*")) pw.println(String.valueOf(a * b));
-            else pw.println(String.valueOf(a / b));
-        } catch (NumberFormatException e) {
-            System.out.println("Error! Not number");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+                if (sign.equals("+")) pw.println(input + " = " + String.valueOf(a + b));
+                else if (sign.equals("-")) pw.println(input + " = " + String.valueOf(a - b));
+                else if (sign.equals("*")) pw.println(input + " = " + String.valueOf(a * b));
+                else pw.println(input + " = " + String.valueOf(a / b));
+            } catch (NumberFormatException e) {
+                pw.println("Error! Not number");
+            } catch (Exception e) {
+                pw.println(e.getMessage());
+            }
         }
         sc.close();
         pw.close();

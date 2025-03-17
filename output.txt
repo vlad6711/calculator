@@ -1,1 +1,7 @@
-4.571428571428571
+23 + 42 = 65.0
+Index 1 out of bounds for length 1
+Error! Not number
+Index 1 out of bounds for length 1
+15 / 0 = Error! Division by zero
+Index 1 out of bounds for length 1
+45 * 2 = 90.0
